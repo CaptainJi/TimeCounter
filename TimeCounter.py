@@ -13,6 +13,12 @@ class TimeCounter:
     # Avoid instantiating every time
     @classmethod
     def count_time(cls, log_interval=1, warmup_interval=0, with_sync=True):
+        '''
+        :param log_interval: 日志间隔
+        :param warmup_interval: 预热间隔
+        :param with_sync: 同步
+        :return: 装饰函数
+        '''
         def _register(func):
             if func.__name__ in cls.names:
                 raise RuntimeError('The registered function name cannot be repeated!')
